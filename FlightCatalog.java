@@ -3,33 +3,28 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 public class FlightCatalog {
-    private static List<Flight> flights = null;
+    private static FlightCatalog flightCatalog = null;
+    private List<Flight> flights;
     private FlightCatalog(){
+        flights = new ArrayList<>();
     }
-    public static List<Flight> getFlightCatalogInstance(){
-        if(flights==null){
-            flights = new ArrayList<Flight>();
+    public static FlightCatalog getFlightCatalogInstance(){
+        if(flightCatalog==null){
+            flightCatalog = new FlightCatalog();
         }
+        return flightCatalog;
+    }
+
+    //Adds a flight to the database
+    public void addFlight(Flight flight){
+        flights.add(flight);
+    }
+
+    //Returns the existing flights in the database
+    public List<Flight> getFlights() {
         return flights;
     }
 
-    public static void addFlight(Flight flight){
-        flights.add(flight);
-        checkStatus(flight.getAircraft());
-    }
-
-    public static void checkStatus(Aircraft aircraft){
-        LocalDateTime currentTime = LocalDateTime.now();
-        for (Flight flight : flights){
-            if(flight.getAircraft().getAircraftId().equals(aircraft.getAircraftId())){
-                if(currentTime.isBefore(flight.getActualArrivalTime()) && currentTime.isAfter(flight.getActualDepartureTime())){
-                    flight.getAircraft().setAircraftStatus(Aircraft.AircraftStatus.IN_TRANSIT);
-                }else{
-                    flight.getAircraft().setAircraftStatus(Aircraft.AircraftStatus.STATIONED);
-                }
-            }
-        }
-    }
 }
 
 

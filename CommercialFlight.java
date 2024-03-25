@@ -1,13 +1,20 @@
 import java.time.LocalDateTime;
 
 public class CommercialFlight extends Flight{
-    private String airlineName;
-    public CommercialFlight(String flightNumber, String sourceAirportCode, String destinationAirportCode, Aircraft aircraft, LocalDateTime actualDepartureTime, LocalDateTime scheduledDepartureTime, LocalDateTime actualArrivalTime, LocalDateTime scheduledArrivalTime, String airlineName) {
-        super(flightNumber, sourceAirportCode, destinationAirportCode, aircraft, actualDepartureTime, scheduledDepartureTime, actualArrivalTime, scheduledArrivalTime);
-        this.airlineName = airlineName;
+    private Airline airline;
+    public CommercialFlight(String flightNumber, Airport sourceAirport, Airport destinationAirport, Aircraft aircraft, LocalDateTime actualDepartureTime, LocalDateTime scheduledDepartureTime, LocalDateTime actualArrivalTime, LocalDateTime scheduledArrivalTime, Airline airline) {
+        super(flightNumber, sourceAirport, destinationAirport, aircraft, actualDepartureTime, scheduledDepartureTime, actualArrivalTime, scheduledArrivalTime);
+        this.airline = airline;
     }
 
-    public String getAirlineName() {
-        return airlineName;
+    //Returns the airline that manages the commercial flight
+    public Airline getAirline() {
+        return airline;
+    }
+
+
+    //Displays flight info, with company name
+    public String displayFlightInfo(){
+        return super.displayFlightInfo() + ", Airline name: " + airline.getAirlineName();
     }
 }

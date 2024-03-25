@@ -1,16 +1,16 @@
 public class AirportAdministrator extends User {
-    private String airportCode; // Unique identifier for the airport
+    private Airport airport; // Unique identifier for the airport
 
-    public AirportAdministrator(String id, String name, String airportCode) {
-        this.id = id;
-        this.name = name;
+    public AirportAdministrator(String username, String password, Airport airport) {
+        this.id = String.valueOf(counter++);
+        this.username = username;
+        this.password = password;
         this.isRegistered = true;
-        this.airportCode = airportCode;
+        this.airport = airport;
     }
 
-    public String getAirportCode() {
-        return airportCode;
+    public Airport getAirport() {
+        return airport;
     }
 
-    // Additional methods specific to airport administrators
 }

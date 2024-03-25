@@ -1,20 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList;
 
 public class AirportCatalog {
-    private static List<Airport> Airports = null;
+    private static AirportCatalog airportCatalog = null;
+    private List<Airport> airports;
     private AirportCatalog(){
+        airports = new ArrayList<>();
     }
-    public static List<Airport> getAirportCatalogInstance(){
-        if(Airports==null){
-            Airports = new ArrayList<Airport>();
+    public static AirportCatalog getAirportCatalogInstance(){
+        if(airportCatalog==null){
+            airportCatalog = new AirportCatalog();
         }
-        return Airports;
+        return airportCatalog;
     }
 
-    public static void addAirport(Airport airport){
-        Airports.add(airport);
+    //Returns the existing airports in the database
+    public List<Airport> getAirports(){
+        return airports;
+    }
+
+    //Adds an airport to the database
+    public void addAirport(Airport airport){
+        airports.add(airport);
     }
 
 }

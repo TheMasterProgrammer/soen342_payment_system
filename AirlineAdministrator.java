@@ -1,16 +1,16 @@
 public class AirlineAdministrator extends User {
-    private String airlineName; // Name of the airline
+    private Airline airline;
 
-    public AirlineAdministrator(String id, String name, String airlineName) {
-        this.id = id;
-        this.name = name;
+    public AirlineAdministrator(String username, String password, Airline airline) {
+        this.id = String.valueOf(counter++);
+        this.username = username;
+        this.password = password;
         this.isRegistered = true;
-        this.airlineName = airlineName;
+        this.airline = airline;
     }
 
-    public String getAirlineName() {
-        return airlineName;
+    public Airline getAirline() {
+        return airline;
     }
 
-    // Additional methods specific to airline administrators
 }

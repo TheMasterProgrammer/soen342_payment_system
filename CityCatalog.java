@@ -6,6 +6,12 @@ public class CityCatalog {
     private List<City> cities;
     private CityCatalog(){
         cities = new ArrayList<>();
+        //Some hardcoded data
+
+        cities.add(new City("Montreal","Canada",1)); //Registering Montreal
+        cities.add(new City("Toronto","Canada",13)); //Registering Toronto
+        cities.add(new City("Ottawa","Canada",5)); //Registering Ottawa
+        cities.add(new City("Austin","United States",25)); //Registering Austin
     }
     public static CityCatalog getCityCatalogInstance(){
         if(cityCatalog==null){

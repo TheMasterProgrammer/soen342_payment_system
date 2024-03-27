@@ -8,6 +8,13 @@ public class AirlineCatalog {
     private List<Airline> airlines;
     private AirlineCatalog(){
         airlines = new ArrayList<>();
+        //Some hardcoded data
+
+        
+        //Registering a new airline with 2 aircraft
+        airlines.add(new Airline("Air Canada", AircraftCatalog.getAircraftCatalogInstance().getAircrafts().get(1), AircraftCatalog.getAircraftCatalogInstance().getAircrafts().get(4)));
+        //Registering a new airline with 2 aircraft
+        airlines.add(new Airline("Fedex", AircraftCatalog.getAircraftCatalogInstance().getAircrafts().get(5), AircraftCatalog.getAircraftCatalogInstance().getAircrafts().get(2)));
     }
     public static AirlineCatalog getAirlineCatalogInstance(){
         if(airlineCatalog==null){

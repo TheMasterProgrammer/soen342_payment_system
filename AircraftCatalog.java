@@ -9,6 +9,16 @@ public class AircraftCatalog {
     private List<Aircraft> aircrafts;
     private AircraftCatalog() {
         aircrafts = new ArrayList<>();
+        //Some hardcoded data
+
+        aircrafts.add(new Aircraft("Boeing 737",AirportCatalog.getAirportCatalogInstance().getAirports().get(0))); //Registering an aircraft in Montreal Airport
+        aircrafts.add(new Aircraft("Boeing 777",AirportCatalog.getAirportCatalogInstance().getAirports().get(0))); //Registering an aircraft in Montreal Airport
+        aircrafts.add(new Aircraft("Boeing 787",AirportCatalog.getAirportCatalogInstance().getAirports().get(1))); //Registering an aircraft in Toronto Airport
+        aircrafts.add(new Aircraft("Airbus A330",AirportCatalog.getAirportCatalogInstance().getAirports().get(1))); //Registering an aircraft in Toronto Airport
+        aircrafts.add(new Aircraft("Airbus A330",AirportCatalog.getAirportCatalogInstance().getAirports().get(2))); //Registering an aircraft in Ottawa Airport
+        aircrafts.add(new Aircraft("Airbus A330",AirportCatalog.getAirportCatalogInstance().getAirports().get(2))); //Registering an aircraft in Ottawa Airport
+        aircrafts.add(new Aircraft("Cessna 01",AirportCatalog.getAirportCatalogInstance().getAirports().get(3))); //Registering an aircraft in Austin Airport
+        aircrafts.add(new Aircraft("Cessna 01",AirportCatalog.getAirportCatalogInstance().getAirports().get(3))); //Registering an aircraft in Austin Airport
     }
     public static AircraftCatalog getAircraftCatalogInstance(){
         if(aircraftCatalog==null){

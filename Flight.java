@@ -98,7 +98,7 @@ public class Flight {
                 System.out.println("Enter the destination airport code");
                 String destinationAirportCode = scanner.nextLine();
                 //make sure the destination airport code is not the same as the source airport code
-                if(!(destinationAirportCode.equals(AirportAdmin.getAirportCode()))){
+                if(!(destinationAirportCode.equals(sourceAirport.getAirportCode()))){
                     for(Airport airport: airportCatalog.getAirports()){
                         //Make sure the user entered an existing destination airport in the database
                         if(airport.getAirportCode().equals(destinationAirportCode)){

@@ -198,6 +198,7 @@ public class Airline {
                             }else{
                                 //Adding the aircraft to the fleet of the airline
                                 ((AirlineAdministrator)user).getAirline().addAircraft(aircraft1);
+                                System.out.println("Aircraft was added");
                             }
                         }catch (NumberFormatException e) {
                             System.out.println("Invalid input. Please enter a valid integer id.");

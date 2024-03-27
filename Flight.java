@@ -73,12 +73,54 @@ public class Flight {
         // but only if the flight has the same source or destination airport as the airport administrator's airport
         if(user instanceof AirportAdministrator){
             Airport AirportAdmin = ((AirportAdministrator)user).getAirport();
-            //Retrieve all the private flights interacting with the airport of the airport admin
+
+            //make sure the user enters an existing source airport
+            boolean foundSourceAirport = false;
+            Airport sourceAirport = null;
+            while(!foundSourceAirport){
+                System.out.println("Enter the source airport code");
+                String sourceAirportCode = scanner.nextLine();
+                for(Airport airport: airportCatalog.getAirports()){
+                    if(airport.getAirportCode().equals(sourceAirportCode)){
+                        sourceAirport = airport;
+                        foundSourceAirport = true;
+                        break;
+                    }
+                }if(!foundSourceAirport){
+                    System.out.println("Error: the code that you entered does not correspond to any existing airport.");
+                }
+            }
+
+            //make sure the user enters an existing destination airport and that it is not the same as the source airport
+            boolean foundDestinationAirport = false;
+            Airport destinationAirport = null;
+            while(!foundDestinationAirport){
+                System.out.println("Enter the destination airport code");
+                String destinationAirportCode = scanner.nextLine();
+                //make sure the destination airport code is not the same as the source airport code
+                if(!(destinationAirportCode.equals(AirportAdmin.getAirportCode()))){
+                    for(Airport airport: airportCatalog.getAirports()){
+                        //Make sure the user entered an existing destination airport in the database
+                        if(airport.getAirportCode().equals(destinationAirportCode)){
+                            destinationAirport = airport;
+                            foundDestinationAirport = true;
+                            break;
+                        }
+                    }if(!foundDestinationAirport){
+                        System.out.println("Error: the code that you entered does not correspond to any existing airport.");
+                    }
+                }else{
+                    System.out.println("Error: you've entered the same airport for the destination airport.");
+                }
+            }
+            //Retrieve all the private flights interacting with the airport of the airport admin in case the source or destination airport is where he works
             List<PrivateFlight> privateFlights = new ArrayList<>();
-            for(Flight flight: flightCatalog.getFlights()){
-                if(flight.getSourceAirport().equals(AirportAdmin) || flight.getDestinationAirport().equals(AirportAdmin)){
-                    if(flight instanceof PrivateFlight){
-                        privateFlights.add((PrivateFlight) flight);
+            if(sourceAirport.equals(AirportAdmin) || destinationAirport.equals(AirportAdmin)) {
+                for (Flight flight : flightCatalog.getFlights()) {
+                    if (flight.getSourceAirport().equals(sourceAirport) && flight.getDestinationAirport().equals(destinationAirport)) {
+                        if (flight instanceof PrivateFlight) {
+                            privateFlights.add((PrivateFlight) flight);
+                        }
                     }
                 }
             }
@@ -93,10 +135,10 @@ public class Flight {
                 System.out.println("There is no private flight passing through your airport");
             }
 
-            //Retrieving all non-private flights interacting with the airport of the airport admin
+            //Retrieving all non-private flights interacting with the source and destination airport
             List<Flight> nonPrivateFlightsOfAirportAdmin = new ArrayList<>();
             for(Flight flight: flightCatalog.getFlights()){
-                if(flight.getSourceAirport().equals(AirportAdmin) || flight.getDestinationAirport().equals(AirportAdmin)){
+                if(flight.getSourceAirport().equals(sourceAirport) && flight.getDestinationAirport().equals(destinationAirport)){
                     if(flight instanceof CargoFlight || flight instanceof CommercialFlight){
                         nonPrivateFlightsOfAirportAdmin.add(flight);
                     }

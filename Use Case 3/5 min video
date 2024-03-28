@@ -2,3 +2,7 @@ Below is a link to the 5 min video
 
 https://www.dropbox.com/scl/fi/p2v3nrxv7qj7n6jm5ms5q/5-min-video-copy1.mov?rlkey=5773dfbcz4hxbn4egauhqtaff&dl=0
 
+I couldn't explain everything in the video but I made sure to add many commments in methods that do the biggest jobs,
+you will find these methods in Flight, Aircraft, Airline, Airport, User, City classes.
+Catalog classes is where I store the data, it can be flights, users, aircrafts etc...
+The console acts as a controller.

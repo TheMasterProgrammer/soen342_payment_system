@@ -1,0 +1,17 @@
+Contract CO2: addFlight()
+Operation: addFlight(user: User, scanner: Scanner)
+Cross References: User case: add a flight given admin status
+Precondition:
+  *The user is authenticated
+  *The user is an administrator
+  *scheduled and arrival time are unique to the airport
+  *aircrafts are stationed at that the scheduled departure time
+  *aircraft are available
+  *flight number is unique
+  *source and destination are different
+  *source and destination are valid
+Postcondition:
+  *A new flight  is added to the flightCatalog, with all specified details
+  *added a new flight that exactly matches the type selected by the user
+  *flight's scheduled times have been integrated without causing any scheduling conflicts 
+  *the new flight's number is confirmed to be unique
